@@ -66,19 +66,19 @@ def queue_back_markup(_, CPLAY):
 def aq_markup(_, chat_id):
     buttons = [
         [
-            InlineKeyboardButton(text="IIᴘᴀᴜsᴇ", callback_data=f"ADMIN Pause|{chat_id}"),
-            InlineKeyboardButton(text="▢sᴛᴏᴘ▢", callback_data=f"ADMIN Stop|{chat_id}"),
-            InlineKeyboardButton(text="sᴋɪᴘ‣‣I", callback_data=f"ADMIN Skip|{chat_id}"),
+            InlineKeyboardButton(text="ايقاف مؤقت", callback_data=f"ADMIN Pause|{chat_id}"),
+            InlineKeyboardButton(text="ايقاف", callback_data=f"ADMIN Stop|{chat_id}"),
+            InlineKeyboardButton(text="تخطي", callback_data=f"ADMIN Skip|{chat_id}"),
 
         ],
         [
-            InlineKeyboardButton(text="▷ʀᴇsᴜᴍᴇ", callback_data=f"ADMIN Resume|{chat_id}"),
-            InlineKeyboardButton(text="ʀᴇᴘʟᴀʏ↺", callback_data=f"ADMIN Replay|{chat_id}"),
+            InlineKeyboardButton(text="استئناف", callback_data=f"ADMIN Resume|{chat_id}"),
+            InlineKeyboardButton(text="اعادة التشغيل", callback_data=f"ADMIN Replay|{chat_id}"),
         ],
         [
             InlineKeyboardButton(
-                text="๏ ᴍᴏʀᴇ ๏", url="https://t.me/vip_creators",
-                
+                text=_["S_B_1"],
+                url=f"https://t.me/{app.username}?startgroup=true",
             ),
         ],
     ]
