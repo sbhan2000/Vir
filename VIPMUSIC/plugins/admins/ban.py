@@ -178,7 +178,7 @@ async def ban_command_handler(client, message):
             except:
                 user_obj = await get_userid_from_username(message.command[1])
                 if user_obj == None:
-                    return await message.reply_text("I can't find that user")
+                    return await message.reply_text("لا استطيع العثور على اليوزر")
                 user_id = user_obj[0]
                 first_name = user_obj[1]
 
@@ -227,7 +227,7 @@ async def unban_command_handler(client, message):
         except:
             user_obj = await get_userid_from_username(message.command[1])
             if user_obj == None:
-                    return await message.reply_text("I can't find that user")
+                    return await message.reply_text("لا استطيع العثور على اليوزر. ")
             user_id = user_obj[0]
             first_name = user_obj[1]
 
@@ -274,7 +274,7 @@ async def mute_command_handler(client, message):
             except:
                 user_obj = await get_userid_from_username(message.command[1])
                 if user_obj == None:
-                    return await message.reply_text("لا استطيع ايجاد يوزرهُ. ")
+                    return await message.reply_text("لا استطيع العثور على اليوزر. ")
                 user_id = user_obj[0]
                 first_name = user_obj[1]
 
@@ -324,7 +324,7 @@ async def unmute_command_handler(client, message):
         except:
             user_obj = await get_userid_from_username(message.command[1])
             if user_obj == None:
-                    return await message.reply_text("لا استطيع ايجاد يوزرهُ")
+                    return await message.reply_text("لا استطيع العثور على اليوزر. ")
             user_id = user_obj[0]
             first_name = user_obj[1]
 
@@ -387,7 +387,7 @@ async def tmute_command_handler(client, message):
             except:
                 user_obj = await get_userid_from_username(message.command[1])
                 if user_obj == None:
-                    return await message.reply_text("لا استطيع العثور على اليوزر")
+                    return await message.reply_text("لا استطيع العثور على اليوزر. ")
                 user_id = user_obj[0]
                 first_name = user_obj[1]
 
