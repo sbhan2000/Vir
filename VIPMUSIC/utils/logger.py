@@ -8,18 +8,18 @@ from config import LOGGER_ID
 async def play_logs(message, streamtype):
     if await is_on_off(2):
         logger_text = f"""
-<b>{app.mention} ᴘʟᴀʏ ʟᴏɢ</b>
+<b>{app.mention} بـدء بـتشغيل</b>
 
-<b>ᴄʜᴀᴛ ɪᴅ :</b> <code>{message.chat.id}</code>
-<b>ᴄʜᴀᴛ ɴᴀᴍᴇ :</b> {message.chat.title}
-<b>ᴄʜᴀᴛ ᴜsᴇʀɴᴀᴍᴇ :</b> @{message.chat.username}
+<b>🥤| أيـدي الـكروب :</b> <code>{message.chat.id}</code>
+<b>🥤| أسـم الـكروب :</b> {message.chat.title}
+<b>🥤| يـوزر الكروب :</b> @{message.chat.username}
 
-<b>ᴜsᴇʀ ɪᴅ :</b> <code>{message.from_user.id}</code>
-<b>ɴᴀᴍᴇ :</b> {message.from_user.mention}
-<b>ᴜsᴇʀɴᴀᴍᴇ :</b> @{message.from_user.username}
+<b>🥤| أيـدي الـعضو :</b> <code>{message.from_user.id}</code>
+<b>🥤| اسـم الـعضو :</b> {message.from_user.mention}
+<b>🥤| يـوزر الـعضو :</b> @{message.from_user.username}
 
-<b>ǫᴜᴇʀʏ :</b> {message.text.split(None, 1)[1]}
-<b>sᴛʀᴇᴀᴍᴛʏᴘᴇ :</b> {streamtype}"""
+<b>🥤| تـم تـشغيل :</b> {message.text.split(None, 1)[1]}
+<b>🥤| نـوع التشغيل :</b> {streamtype}"""
         if message.chat.id != LOGGER_ID:
             try:
                 await app.send_message(
