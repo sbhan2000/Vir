@@ -29,7 +29,7 @@ async def pin(_, message):
         if user_stats.privileges.can_pin_messages and message.reply_to_message:
             try:
                 await message.reply_to_message.pin()
-                await message.reply_text(f"**🥤| تم التثبيت بنجاح**\n\n**🥤| المجموعة :** {chat_title}\n**🥤| المشرف :** {name}", reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton(" الـرساله ", url=replied.link)]]))
+                await message.reply_text(f"**🥤| تم تثبيت الرساله بنجاح**\n\n**🥤| المجموعة :** {chat_title}\n**🥤| المشرف :** {name}", reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton(" الـرساله ", url=replied.link)]]))
             except Exception as e:
                 await message.reply_text(str(e))
 
@@ -65,7 +65,7 @@ async def unpin(_, message):
         if user_stats.privileges.can_pin_messages and message.reply_to_message:
             try:
                 await message.reply_to_message.unpin()
-                await message.reply_text(f"**🥤| تم الغاء التثبيت بنجاح**\n\n**🥤| المجموعة :** {chat_title}\n**🥤| المشرف :** {name}", reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton(" الـرساله  ", url=replied.link)]]))
+                await message.reply_text(f"**🥤| تم الغاء تثبيت الرساله بنجاح**\n\n**🥤| المجموعة :** {chat_title}\n**🥤| المشرف :** {name}", reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton(" الـرساله  ", url=replied.link)]]))
             except Exception as e:
                 await message.reply_text(str(e))
 
@@ -108,7 +108,7 @@ async def setchatphoto(_, message):
              if admin_check.privileges.can_change_info:
                 photo = await reply.download()
                 await message.chat.set_photo(photo=photo)
-                await msg.edit_text("**🥤| تم اضافة صورة للمجموعة بنجاح\n\n🥤| بواسطة :** {}".format(message.from_user.mention))
+                await msg.edit_text("**🥤| تم اضافة صورة المجموعة بنجاح\n\n🥤| بواسطة :** {}".format(message.from_user.mention))
              else:
                 await msg.edit("**🥤| حدث حطأ حاول مرة اخرى.**")
      
