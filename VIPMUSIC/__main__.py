@@ -21,7 +21,7 @@ async def init():
         and not config.STRING4
         and not config.STRING5
     ):
-        LOGGER(𝚂𝙾𝚄𝚁𝙲𝙴 𝙷𝙼𝙳).error("كود جلسة الحساب المساعد غير مدعوم ...")
+        LOGGER(__name__).error("كود جلسة الحساب المساعد غير مدعوم ...")
         
     await sudo()
     try:
