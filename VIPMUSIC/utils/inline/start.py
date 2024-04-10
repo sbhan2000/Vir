@@ -1,4 +1,5 @@
 from pyrogram.types import InlineKeyboardButton
+from config import SUPPORT_CHANNEL, SUPPORT_CHAT
 
 import config
 from VIPMUSIC import app
