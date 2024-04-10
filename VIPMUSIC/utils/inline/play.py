@@ -67,6 +67,13 @@ def stream_markup_timer(_, videoid, chat_id, played, dur):
 
         [
             InlineKeyboardButton(
+                text=_["S_B_5"],
+                url=f"https://t.me/{app.username}?startgroup=true",
+            ),
+        ],
+
+        [
+            InlineKeyboardButton(
                 text=_["PL_B_2"],
                 callback_data=f"vip_playlist {videoid}",
             ),
@@ -82,6 +89,13 @@ def stream_markup_timer(_, videoid, chat_id, played, dur):
 
 def stream_markup(_, videoid, chat_id):
     buttons  = [
+
+        [
+            InlineKeyboardButton(
+                text=_["S_B_5"],
+                url=f"https://t.me/{app.username}?startgroup=true",
+            ),
+        ],
 
         [
             InlineKeyboardButton(
@@ -293,34 +307,24 @@ def queue_markup(_, videoid, chat_id):
             ),
         ],
 
-
         [
             InlineKeyboardButton(
-                text="II ᴘᴀᴜsᴇ",
-                callback_data=f"ADMIN Pause|{chat_id}",
+                text=_["PL_B_2"],
+                callback_data=f"vip_playlist {videoid}",
             ),
-
             InlineKeyboardButton(
-                text="▢ sᴛᴏᴘ", callback_data=f"ADMIN Stop|{chat_id}"
-            ),
-
-            InlineKeyboardButton(
-                text="sᴋɪᴘ ‣‣I", callback_data=f"ADMIN Skip|{chat_id}"
-            ),
-        ],
-        [
-            InlineKeyboardButton(text="▷ ʀᴇsᴜᴍᴇ", callback_data=f"ADMIN Resume|{chat_id}"),
-            InlineKeyboardButton(text="ʀᴇᴘʟᴀʏ ↺", callback_data=f"ADMIN Replay|{chat_id}"),
-        ],
-        [
-            InlineKeyboardButton(
-                text="๏ ᴍᴏʀᴇ ๏",
+                text=_["PL_B_3"],
                 callback_data=f"PanelMarkup None|{chat_id}",
             ),
         ],
+        [
+            InlineKeyboardButton(
+                text=_["CLOSEMENU_BUTTON"], callback_data="close"
+            )
+        ],
     ]
-
     return buttons
+
 
 def stream_markup2(_, chat_id):
     buttons = [
@@ -522,4 +526,54 @@ def panel_markup_4(_, vidid, chat_id, played, dur):
 
     return buttons
 
+def panel_markup_4(_, videoid, chat_id):
+    buttons = [
+        [
+            InlineKeyboardButton(
+                text= "‹ تـحميل فـيديو ›",
+                callback_data=f"downloadvideo {videoid}"),
+            InlineKeyboardButton(
+                text= "‹ تـحميل صـوت ›",
+                callback_data=f"downloadaudio {videoid}")
+        ],
+        [
+            InlineKeyboardButton(
+                    text="🕒 0.5x",
+                    callback_data=f"SpeedUP {chat_id}|0.5",
+                ),
+                InlineKeyboardButton(
+                    text="🕓 0.75x",
+                    callback_data=f"SpeedUP {chat_id}|0.75",
+                ),
+                InlineKeyboardButton(
+                    text="🕤 1.0x",
+                    callback_data=f"SpeedUP {chat_id}|1.0",
+                ),
+            ],
+            [
+                InlineKeyboardButton(
+                    text="🕤 1.5x",
+                    callback_data=f"SpeedUP {chat_id}|1.5",
+                ),
+                InlineKeyboardButton(
+                    text="🕛 2.0x",
+                    callback_data=f"SpeedUP {chat_id}|2.0",
+                ),
+            ],
+        [
+            InlineKeyboardButton(
+                text="◀️",
+                callback_data=f"Pages Back|3|{videoid}|{chat_id}",
+            ),
+            InlineKeyboardButton(
+                text="رجوع",
+                callback_data=f"MainMarkup {videoid}|{chat_id}",
+            ),
+            InlineKeyboardButton(
+                text="▶️",
+                callback_data=f"Pages Forw|0|{videoid}|{chat_id}",
+            ),
+        ],
+    ]
+    return buttons
 
