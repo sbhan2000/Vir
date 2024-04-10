@@ -359,7 +359,7 @@ def panel_markup_1(_, videoid, chat_id):
     buttons = [
         [
             InlineKeyboardButton(
-                text="توقف", callback_data=f"ADMIN Pause|{chat_id}"
+                text="ايقاف مؤقت", callback_data=f"ADMIN Pause|{chat_id}"
             ),
             InlineKeyboardButton(
                 text="استئناف",
