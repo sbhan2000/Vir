@@ -564,7 +564,7 @@ class Call(PyTgCalls):
         return str(round(sum(pings) / len(pings), 3))
 
     async def start(self):
-        LOGGER(𝚂𝙾𝚄𝚁𝙲𝙴 𝙷𝙼𝙳).info("🥤| بـدء الـسورس بالعمل...\n")
+        LOGGER(__name__).info("🥤| بـدء الـسورس بالعمل...\n")
         if config.STRING1:
             await self.one.start()
         if config.STRING2:
