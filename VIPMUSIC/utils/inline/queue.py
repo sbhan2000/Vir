@@ -1,7 +1,7 @@
 from typing import Union
 
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
-
+from VIPMUSIC import app
 
 def queue_markup(
     _,
