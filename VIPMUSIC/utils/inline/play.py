@@ -455,7 +455,7 @@ def panel_markup_3(_, videoid, chat_id):
         [
             InlineKeyboardButton(
                 text="◀️",
-                callback_data=f"Pages Back|2|{videoid}|{chat_id}",
+                callback_data=f"Pages Back|3|{videoid}|{chat_id}",
             ),
             InlineKeyboardButton(
                 text="رجوع",
@@ -571,7 +571,7 @@ def panel_markup_4(_, videoid, chat_id):
             ),
             InlineKeyboardButton(
                 text="▶️",
-                callback_data=f"Pages Forw|3|{videoid}|{chat_id}",
+                callback_data=f"Pages Forw|2|{videoid}|{chat_id}",
             ),
         ],
     ]
