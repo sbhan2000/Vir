@@ -55,9 +55,16 @@ async def ban_user(user_id, first_name, admin_id, admin_name, chat_id, reason, t
 
     user_mention = mention(user_id, first_name)
     admin_mention = mention(admin_id, admin_name)
+
+    msg_text += f""
+    msg_text += f"{user_mention} تم حظره بواسطة {admin_mention}\n"
     
-    msg_text += f"{user_mention} تم حظره بواسطة {admin_mention}"
-    return msg_text
+    if reason:
+        msg_text += f"Reason: `{reason}`\n"
+    if time:
+        msg_text += f"Time: `{time}`\n"
+
+    return msg_text, True
 
 
 async def unban_user(user_id, first_name, admin_id, admin_name, chat_id):
@@ -188,8 +195,12 @@ async def ban_command_handler(client, message):
         await message.reply_text("**🥤| من فضلك قم بالرد على رسالة المستخدم او كتابة اليوزر.**")
         return
         
-    msg_text, result = await ban_user(user_id, first_name, admin_id, admin_name, chat_id)
-    await message.reply_text(msg_text)
+    msg_text, result = await ban_user(user_id, first_name, admin_id, admin_name, chat_id, reason)
+    if result == True:
+        await message.reply_text(msg_text)
+    if result == False:
+        await message.reply_text(msg_text)
+
 
 @app.on_message(filters.command(["الغاء الحظر","رفع الحظر"], prefixes=["/", "!", "%", ",", "", ".", "@", "#"]))
 async def unban_command_handler(client, message):
@@ -231,7 +242,9 @@ async def unban_command_handler(client, message):
     await message.reply_text(msg_text)
 
 
-@app.on_message(filters.command(["رفع الكتم","الغاء الكتم"], prefixes=["/", "!", "%", ",", "", ".", "@", "#"]))
+
+
+@app.on_message(filters.command(["كتم"], prefixes=["/", "!", "%", ",", "", ".", "@", "#"]))
 async def mute_command_handler(client, message):
     chat = message.chat
     chat_id = chat.id
@@ -242,7 +255,7 @@ async def mute_command_handler(client, message):
         if member.privileges.can_restrict_members:
             pass
         else:
-            msg_text = "**🥤|لا تمتلك الصلاحيات الكافيه.**"
+            msg_text = "**🥤| لا تمتلك الصلاحيات الكافيه.**"
             return await message.reply_text(msg_text)
     else:
         msg_text = "**🥤| لا تمتلك الصلاحيات الكافيه.**"
@@ -250,28 +263,40 @@ async def mute_command_handler(client, message):
 
     # Extract the user ID from the command or reply
     if len(message.command) > 1:
-        try:
-            user_id = int(message.command[1])
-            first_name = "User"
-        except:
-            user_obj = await get_userid_from_username(message.command[1])
-            if user_obj == None:
+        if message.reply_to_message:
+            user_id = message.reply_to_message.from_user.id
+            first_name = message.reply_to_message.from_user.first_name
+            reason = message.text.split(None, 1)[1]
+        else:
+            try:
+                user_id = int(message.command[1])
+                first_name = "User"
+            except:
+                user_obj = await get_userid_from_username(message.command[1])
+                if user_obj == None:
                     return await message.reply_text("لا استطيع العثور على اليوزر. ")
-            user_id = user_obj[0]
-            first_name = user_obj[1]
+                user_id = user_obj[0]
+                first_name = user_obj[1]
+
+            try:
+                reason = message.text.partition(message.command[1])[2]
+            except:
+                reason = None
 
     elif message.reply_to_message:
         user_id = message.reply_to_message.from_user.id
         first_name = message.reply_to_message.from_user.first_name
+        reason = None
     else:
-        await message.reply_text("**🥤| من فضلك قم بالرد على رسالة المستخدم او كتابه اليوزر")
+        await message.reply_text("**🥤| من فضلك قم بالرد على رسالة المستخدم او كتابة اليوزر.**")
         return
-        
-    msg_text = await mute_user(user_id, first_name, admin_id, admin_name, chat_id)
-    await message.reply_text(msg_text)
-
-
-
+    
+    msg_text, result = await mute_user(user_id, first_name, admin_id, admin_name, chat_id, reason)
+    if result == True:
+        await message.reply_text(msg_text)
+           
+    if result == False:
+        await message.reply_text(msg_text)
 
 
 @app.on_message(filters.command(["رفع الكتم","الغاء الكتم"], prefixes=["/", "!", "%", ",", "", ".", "@", "#"]))
@@ -317,7 +342,7 @@ async def unmute_command_handler(client, message):
 
 
 
-@app.on_message(filters.command(["كتمه"], prefixes=["/", "!", "%", ",", "", ".", "@", "#"]))
+@app.on_message(filters.command(["كتم"], prefixes=["/", "!", "%", ",", "", ".", "@", "#"]))
 async def tmute_command_handler(client, message):
     chat = message.chat
     chat_id = chat.id
@@ -345,7 +370,7 @@ async def tmute_command_handler(client, message):
                 time_amount = time.split(time[-1])[0]
                 time_amount = int(time_amount)
             except:
-                return await message.reply_text("**🥤| مثال على استخدام الامر :**كتمه 2m او كتمه 2h او كتمه 2 Days ")
+                return await message.reply_text("**🥤| مثال على استخدام الامر :**كتم 2m او كتم 2h او كتم 2 Days ")
 
             if time[-1] == "m":
                 mute_duration = datetime.timedelta(minutes=time_amount)
@@ -354,7 +379,7 @@ async def tmute_command_handler(client, message):
             elif time[-1] == "d":
                 mute_duration = datetime.timedelta(days=time_amount)
             else:
-                return await message.reply_text("**🥤| مثال على استخدام الامر :**كتمه 2m او كتمه 2h او كتمه 2 Days ")
+                return await message.reply_text("**🥤| مثال على استخدام الامر :**كتم 2m او كتم 2h او كتم 2 Days ")
         else:
             try:
                 user_id = int(message.command[1])
@@ -372,7 +397,7 @@ async def tmute_command_handler(client, message):
                     time_amount = time.split(time[-1])[0]
                     time_amount = int(time_amount)
                 except:
-                    return await message.reply_text("**🥤| مثال على استخدام الامر :**كتمه 2m او كتمه 2h او كتمه 2 Days ")
+                    return await message.reply_text("**🥤| مثال على استخدام الامر :**كتم 2m او كتم 2h او كتم 2 Days ")
 
                 if time[-1] == "m":
                     mute_duration = datetime.timedelta(minutes=time_amount)
@@ -381,14 +406,17 @@ async def tmute_command_handler(client, message):
                 elif time[-1] == "d":
                     mute_duration = datetime.timedelta(days=time_amount)
                 else:
-                    return await message.reply_text("**🥤| مثال على استخدام الامر :**كتمه 2m او كتمه 2h او كتمه 2 Days ")
+                    return await message.reply_text("**🥤| مثال على استخدام الامر :**كتم 2m او كتم 2h او كتم 2 Days ")
             except:
-                return await message.reply_text("**🥤| من فضلك قم بالرد على رسالة المستخدم او كتابة اليوزر\n🥤| الاستخدام **: `كتمه @user 2m`")
+                return await message.reply_text("**🥤| من فضلك قم بالرد على رسالة المستخدم او كتابة اليوزر\n🥤| الاستخدام **: `كتم @user 2m`")
 
     else:
-        await message.reply_text("**🥤| من فضلك قم بالرد على رسالة المستخدم او كتابة اليوزر\n🥤| الاستخدام **: `كتمه @user 2m`")
+        await message.reply_text("**🥤| من فضلك قم بالرد على رسالة المستخدم او كتابة اليوزر\n🥤| الاستخدام **: `كتم @user 2m`")
         return
     
-    msg_text, result = await mute_user(user_id, first_name, admin_id, admin_name, chat_id)
-    await message.reply_text(msg_text)
+    msg_text, result = await mute_user(user_id, first_name, admin_id, admin_name, chat_id, reason=None, time=mute_duration)
+    if result == True:
+        await message.reply_text(msg_text)
+    if result == False:
+        await message.reply_text(msg_text)
 
