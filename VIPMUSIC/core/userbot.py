@@ -77,7 +77,7 @@ class Userbot(Client):
                 await self.one.leave_chat(TEST_ID)
                 
             except:
-                LOGGER(𝚂𝙾𝚄𝚁𝙲𝙴 𝙷𝙼𝙳).error(
+                LOGGER(__name__).error(
                     "**🥤| تـم تـشغيل الـحساب الـمساعد بـنجاح.**",
                 )
         
@@ -85,7 +85,7 @@ class Userbot(Client):
             self.one.name = self.one.me.mention
             self.one.username = self.one.me.username
             assistantids.append(self.one.id)
-            LOGGER(𝚂𝙾𝚄𝚁𝙲𝙴 𝙷𝙼𝙳).info(f"تـم تـشغيل الـحساب الـمساعد {self.one.name} بـنجاح. ")
+            LOGGER(__name__).info(f"تـم تـشغيل الـحساب الـمساعد {self.one.name} بـنجاح. ")
         
         if config.STRING2:
             await self.two.start()
@@ -97,7 +97,7 @@ class Userbot(Client):
             try:
                 await self.two.send_message(config.LOGGER_ID, "تـم تـشغيل الـحساب الـمساعد بـنجاح")
             except:
-                LOGGER(𝚂𝙾𝚄𝚁𝙲𝙴 𝙷𝙼𝙳).error(
+                LOGGER(__name__).error(
                     "**🥤| تـم تـشغيل الـحساب الـمساعد بـنجاح.**",
                 )
                 
@@ -105,7 +105,7 @@ class Userbot(Client):
             self.two.name = self.two.me.mention
             self.two.username = self.two.me.username
             assistantids.append(self.two.id)
-            LOGGER(𝚂𝙾𝚄𝚁𝙲𝙴 𝙷𝙼𝙳).info(f"تـم تـشغيل الـحساب الـمساعد {self.two.name} بـنجاح. ")
+            LOGGER(__name__).info(f"تـم تـشغيل الـحساب الـمساعد {self.two.name} بـنجاح. ")
        
         if config.STRING3:
             await self.three.start()
@@ -117,7 +117,7 @@ class Userbot(Client):
             try:
                 await self.three.send_message(config.LOGGER_ID, "تـم تـشغيل الـحساب الـمساعد بـنجاح")
             except:
-                LOGGER(𝚂𝙾𝚄𝚁𝙲𝙴 𝙷𝙼𝙳).error(
+                LOGGER(__name__).error(
                     "**🥤| تـم تـشغيل الـحساب الـمساعد بـنجاح.**",
                 )
                 
@@ -125,7 +125,7 @@ class Userbot(Client):
             self.three.name = self.three.me.mention
             self.three.username = self.three.me.username
             assistantids.append(self.three.id)
-            LOGGER(𝚂𝙾𝚄𝚁𝙲𝙴 𝙷𝙼𝙳).info(f"تـم تـشغيل الـحساب الـمساعد {self.three.name} بـنجاح. ")
+            LOGGER(__name__).info(f"تـم تـشغيل الـحساب الـمساعد {self.three.name} بـنجاح. ")
 
         if config.STRING4:
             await self.four.start()
@@ -137,7 +137,7 @@ class Userbot(Client):
             try:
                 await self.four.send_message(config.LOGGER_ID, "تـم تـشغيل الـحساب الـمساعد بـنجاح")
             except:
-                LOGGER(𝚂𝙾𝚄𝚁𝙲𝙴 𝙷𝙼𝙳).error(
+                LOGGER(__name__).error(
                     "**🥤| تـم تـشغيل الـحساب الـمساعد بـنجاح.**",
                 )
                 
@@ -145,7 +145,7 @@ class Userbot(Client):
             self.four.name = self.four.me.mention
             self.four.username = self.four.me.username
             assistantids.append(self.four.id)
-            LOGGER(𝚂𝙾𝚄𝚁𝙲𝙴 𝙷𝙼𝙳).info(f"تـم تـشغيل الـحساب الـمساعد {self.four.name} بـنجاح. ")
+            LOGGER(__name__).info(f"تـم تـشغيل الـحساب الـمساعد {self.four.name} بـنجاح. ")
 
         if config.STRING5:
             await self.five.start()
@@ -157,7 +157,7 @@ class Userbot(Client):
             try:
                 await self.five.send_message(config.LOGGER_ID, "تـم تـشغيل الـحساب الـمساعد بـنجاح")
             except:
-                LOGGER(𝚂𝙾𝚄𝚁𝙲𝙴 𝙷𝙼𝙳).error(
+                LOGGER(__name__).error(
                     "**🥤| تـم تـشغيل الـحساب الـمساعد بـنجاح.**",
                 )
                 
@@ -165,10 +165,10 @@ class Userbot(Client):
             self.five.name = self.five.me.mention
             self.five.username = self.five.me.username
             assistantids.append(self.five.id)
-            LOGGER(𝚂𝙾𝚄𝚁𝙲𝙴 𝙷𝙼𝙳).info(f"تـم تـشغيل الـحساب الـمساعد {self.five.name} بـنجاح. ")
+            LOGGER(__name__).info(f"تـم تـشغيل الـحساب الـمساعد {self.five.name} بـنجاح. ")
 
     async def stop(self):
-        LOGGER(𝚂𝙾𝚄𝚁𝙲𝙴 𝙷𝙼𝙳).info(f"تـم ايـقاف الـحساب الـمساعد بـنجاح...")
+        LOGGER(__name__).info(f"تـم ايـقاف الـحساب الـمساعد بـنجاح...")
         try:
             if config.STRING1:
                 await self.one.stop()
