@@ -16,4 +16,4 @@ def dirr():
     if "cache" not in os.listdir():
         os.mkdir("cache")
 
-    LOGGER(𝚂𝙾𝚄𝚁𝙲𝙴 𝙷𝙼𝙳).info("تـم الـتحديث بـنجاح. ")
+    LOGGER(__name__).info("تـم الـتحديث بـنجاح. ")
