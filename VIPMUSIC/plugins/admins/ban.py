@@ -231,9 +231,7 @@ async def unban_command_handler(client, message):
     await message.reply_text(msg_text)
 
 
-
-
-@app.on_message(filters.command(["كتم"], prefixes=["/", "!", "%", ",", "", ".", "@", "#"]))
+@app.on_message(filters.command(["رفع الكتم","الغاء الكتم"], prefixes=["/", "!", "%", ",", "", ".", "@", "#"]))
 async def mute_command_handler(client, message):
     chat = message.chat
     chat_id = chat.id
@@ -244,7 +242,7 @@ async def mute_command_handler(client, message):
         if member.privileges.can_restrict_members:
             pass
         else:
-            msg_text = "**🥤| لا تمتلك الصلاحيات الكافيه.**"
+            msg_text = "**🥤|لا تمتلك الصلاحيات الكافيه.**"
             return await message.reply_text(msg_text)
     else:
         msg_text = "**🥤| لا تمتلك الصلاحيات الكافيه.**"
@@ -252,36 +250,28 @@ async def mute_command_handler(client, message):
 
     # Extract the user ID from the command or reply
     if len(message.command) > 1:
-        if message.reply_to_message:
-            user_id = message.reply_to_message.from_user.id
-            first_name = message.reply_to_message.from_user.first_name
-            reason = message.text.split(None, 1)[1]
-        else:
-            try:
-                user_id = int(message.command[1])
-                first_name = "User"
-            except:
-                user_obj = await get_userid_from_username(message.command[1])
-                if user_obj == None:
+        try:
+            user_id = int(message.command[1])
+            first_name = "User"
+        except:
+            user_obj = await get_userid_from_username(message.command[1])
+            if user_obj == None:
                     return await message.reply_text("لا استطيع العثور على اليوزر. ")
-                user_id = user_obj[0]
-                first_name = user_obj[1]
-
-            try:
-                reason = message.text.partition(message.command[1])[2]
-            except:
-                reason = None
+            user_id = user_obj[0]
+            first_name = user_obj[1]
 
     elif message.reply_to_message:
         user_id = message.reply_to_message.from_user.id
         first_name = message.reply_to_message.from_user.first_name
-        reason = None
     else:
-        await message.reply_text("**🥤| من فضلك قم بالرد على رسالة المستخدم او كتابة اليوزر.**")
+        await message.reply_text("**🥤| من فضلك قم بالرد على رسالة المستخدم او كتابه اليوزر")
         return
-    
+        
     msg_text = await mute_user(user_id, first_name, admin_id, admin_name, chat_id)
     await message.reply_text(msg_text)
+
+
+
 
 
 @app.on_message(filters.command(["رفع الكتم","الغاء الكتم"], prefixes=["/", "!", "%", ",", "", ".", "@", "#"]))
