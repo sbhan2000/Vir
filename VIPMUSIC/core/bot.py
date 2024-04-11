@@ -1,53 +1,55 @@
-from pyrogram import Client, errors
-from pyrogram.enums import ChatMemberStatus, ParseMode
+# Copyright (C) 2024 by Alexa_Help @ Github, < https://github.com/TheTeamAlexa >
+# Subscribe On YT < Jankari Ki Duniya >. All rights reserved. © Alexa © Yukki.
 
+""""
+TheTeamAlexa is a project of Telegram bots with variety of purposes.
+Copyright (c) 2024 -present Team=Alexa <https://github.com/TheTeamAlexa>
+
+This program is free software: you can redistribute it and can modify
+as you want or you can collabe if you have new ideas.
+"""
+
+
+import sys
+
+from pyrogram import Client
 import config
-
 from ..logging import LOGGER
+from pyrogram.enums import ChatMemberStatus
 
 
 class VIP(Client):
     def __init__(self):
-        LOGGER(__name__).info(f"تـم تـشغيل الـبوت بـنجاح... ")
         super().__init__(
-            name="VIPMUSIC",
+            "VIPMUSIC",
             api_id=config.API_ID,
             api_hash=config.API_HASH,
             bot_token=config.BOT_TOKEN,
             in_memory=True,
-            max_concurrent_transmissions=7,
         )
+        LOGGER(__name__).info(f"**🥤| تـم تـشغيل الـبوت بـنجاح...**")
 
     async def start(self):
         await super().start()
-        self.id = self.me.id
-        self.name = self.me.first_name + " " + (self.me.last_name or "")
-        self.username = self.me.username
-        self.mention = self.me.mention
-
+        get_me = await self.get_me()
+        self.username = get_me.username
+        self.id = get_me.id
+        self.mention = get_me.mention
         try:
             await self.send_message(
-                chat_id=config.LOGGER_ID,
-                text=f"<u><b>» {self.mention} 🥤| تـم تـشغيل بـوت :</b><u>\n\n🥤|أيـدي الـبوت : <code>{self.id}</code>\n\n🥤| اسـم الـبوت : {self.name}\n\n🥤| يـوزر الـبوت : @{self.username}",
+                config.LOG_GROUP_ID, "**🥤| تـم تـشغيل الـبوت بـنجاح، في انـتظار الـساب الـمساعد...**"
             )
-        except (errors.ChannelInvalid, errors.PeerIdInvalid):
+        except:
             LOGGER(__name__).error(
-                "قـم بـأضافة البوت الى المجموعه ورفعه مشرف وفتح اتصال"
+                "**🥤| قـم بـرفع الـبوت مشرف.**"
             )
-            
-        except Exception as ex:
-            LOGGER(__name__).error(
-                f"لـم يـسطتع الـبوت الـوصول الى الـمجموعه.\n  بسبب : {type(ex).__name__}."
-            )
-            
-
+            sys.exit()
         a = await self.get_chat_member(config.LOG_GROUP_ID, self.id)
         if a.status != ChatMemberStatus.ADMINISTRATOR:
-            LOGGER(__name__).error(
-                "مـن فضلك قـم بـرفع الـبوت مـشرف وفـتح اتـصال. "
-            )
-            
-        LOGGER(__name__).info(f"🥤| تـم تـشغيل بـوت {self.name} بـنجاح. ")
-
-    async def stop(self):
-        await super().stop()
+            LOGGER(__name__).error("**🥤| مـن فـضلك قـم بـرفع الـبوت مشرف.**")
+            sys.exit()
+        if get_me.last_name:
+            self.name = get_me.first_name + " " + get_me.last_name
+        else:
+            self.name = get_me.first_name
+        LOGGER(__name__).info(f"**🥤| تـم تـشغيل بـوت {self.name} بـنجاح.**")
