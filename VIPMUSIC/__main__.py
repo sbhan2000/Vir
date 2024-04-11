@@ -41,7 +41,7 @@ async def init():
     await userbot.start()
     await VIP.start()
     await VIP.decorators()
-    LOGGER("𝚂𝙾𝚄𝚁𝙲𝙴 𝙷𝙼𝙳").info(
+    LOGGER("__name__").info(
             "خطأ .. قم بفتح المكالمة في مجموعة السجل الخاصه بك\n\nجارِ ايقاف بوت الميوزك . . ."
     )
     await idle()
@@ -52,7 +52,7 @@ async def init():
                 
     await app.stop()
     await userbot.stop()
-    LOGGER("𝚂𝙾𝚄𝚁𝙲𝙴 𝙷𝙼𝙳").info("جارِ ايقاف بوت الميوزك . . .") 
+    LOGGER("__name__").info("جارِ ايقاف بوت الميوزك . . .") 
     
 
 if __name__ == "__main__":
