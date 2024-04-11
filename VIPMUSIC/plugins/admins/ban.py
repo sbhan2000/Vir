@@ -109,7 +109,8 @@ async def mute_user(user_id, first_name, admin_id, admin_name, chat_id, reason, 
     user_mention = mention(user_id, first_name)
     admin_mention = mention(admin_id, admin_name)
 
-    msg_text += f"{user_mention} تم كتمه بواسطة {admin_mention}\n"
+    msg_text = f"{user_mention} تم كتمه بواسطة {admin_mention}"
+    return msg_text
     
     if reason:
         msg_text += f"Reason: `{reason}`\n"
