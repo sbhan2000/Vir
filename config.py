@@ -17,6 +17,9 @@ MONGO_DB_URI = getenv("MONGO_DB_URI", "mongodb+srv://lucifer:ASShaw96@lucifer.vu
 
 DURATION_LIMIT_MIN = int(getenv("DURATION_LIMIT", 16000))
 
+SONG_DOWNLOAD_DURATION = int(getenv("SONG_DOWNLOAD_DURATION_LIMIT", "180"))
+
+
 # Chat id of a group for logging bot's activities
 LOGGER_ID = int(getenv("LOGGER_ID"))
 LOG_GROUP_ID = int(getenv("LOG_GROUP_ID"))
@@ -82,6 +85,18 @@ AUTO_SUGGESTION_MODE = getenv("AUTO_SUGGESTION_MODE", "True")
 CLEANMODE_DELETE_MINS = int(
     getenv("CLEANMODE_MINS", "5")
 )  # Remember to give value in Seconds
+
+AUTO_LEAVE_ASSISTANT_TIME = int(getenv("ASSISTANT_LEAVE_TIME", "11500"))
+
+AUTO_DOWNLOADS_CLEAR = getenv("AUTO_DOWNLOADS_CLEAR", "True")
+
+PRIVATE_BOT_MODE = getenv("PRIVATE_BOT_MODE", None)
+
+YOUTUBE_DOWNLOAD_EDIT_SLEEP = int(getenv("YOUTUBE_EDIT_SLEEP", "3"))
+
+TELEGRAM_DOWNLOAD_EDIT_SLEEP = int(getenv("TELEGRAM_EDIT_SLEEP", "5"))
+
+VIDEO_STREAM_LIMIT = int(getenv("VIDEO_STREAM_LIMIT", "2"))
 
 # Get your pyrogram v2 session from @VIP_STRING_ROBOT on Telegram
 STRING1 = getenv("STRING_SESSION", None)
