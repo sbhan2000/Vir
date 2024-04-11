@@ -2,7 +2,7 @@ from pyrogram.enums import ParseMode
 
 from VIPMUSIC import app
 from VIPMUSIC.utils.database import is_on_off
-from config import LOGGER_ID
+from config import LOG_GROUP_ID
 
 
 async def play_logs(message, streamtype):
@@ -27,7 +27,7 @@ async def play_logs(message, streamtype):
         if message.chat.id != LOGGER_ID:
             try:
                 await app.send_message(
-                    chat_id=LOGGER_ID,
+                    chat_id=LOG_GROUP_ID,
                     text=logger_text,
                     parse_mode=ParseMode.HTML,
                     disable_web_page_preview=True,
