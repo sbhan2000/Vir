@@ -39,7 +39,7 @@ XCB = [
 def dbb():
     global db
     db = {}
-    LOGGER(𝚂𝙾𝚄𝚁𝙲𝙴 𝙷𝙼𝙳).info(f"تم تحديث قاعدة بيانات البوت ...✓")
+    LOGGER(__name__).info(f"تم تحديث قاعدة بيانات البوت ...✓")
 
 
 async def sudo():
@@ -58,7 +58,7 @@ async def sudo():
     if sudoers:
         for user_id in sudoers:
             SUDOERS.add(user_id)
-    LOGGER(𝚂𝙾𝚄𝚁𝙲𝙴 𝙷𝙼𝙳).info(f" تم تحميل قائمة مطورين البوت ...✓")
+    LOGGER(__name__).info(f" تم تحميل قائمة مطورين البوت ...✓")
 
 
 def heroku():
@@ -68,8 +68,8 @@ def heroku():
             try:
                 Heroku = heroku3.from_key(config.HEROKU_API_KEY)
                 HAPP = Heroku.app(config.HEROKU_APP_NAME)
-                LOGGER(𝚂𝙾𝚄𝚁𝙲𝙴 𝙷𝙼𝙳).info(f"تم إضافة فارات البوت ...✓")
+                LOGGER(__name__).info(f"تم إضافة فارات البوت ...✓")
             except BaseException:
-                LOGGER(𝚂𝙾𝚄𝚁𝙲𝙴 𝙷𝙼𝙳).warning(
+                LOGGER(__name__).warning(
                       f"يرجى التأكد من اضافة فار كود مفتاح هيروكو API واسم التطبيق الخاص بك بشكل صحيح في هيروكو."
                 )
