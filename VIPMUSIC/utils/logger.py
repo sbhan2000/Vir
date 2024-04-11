@@ -10,7 +10,7 @@ as you want or you can collabe if you have new ideas.
 """
 
 
-from config import LOG, LOG_GROUP_ID, MUSIC_BOT_NAME
+from config import LOG, LOG_GROUP_ID
 from VIPMUSIC.utils.database import is_on_off
 from VIPMUSIC import app
 
@@ -22,8 +22,6 @@ async def play_logs(message, streamtype):
         else:
             chatusername = "ᴩʀɪᴠᴀᴛᴇ ᴄʜᴀᴛ"
         logger_text = f"""
-**━━━━━━━━━━━━━━━**
-**💞 {MUSIC_BOT_NAME} ᴍᴜsɪᴄ ʟᴏɢs **
 **━━━━━━━━━━━━━━━**
 **🌹️ 𝐂𝐡𝐚𝐭 𝐍𝐚𝐌𝐞 : >** {message.chat.title} [`{message.chat.id}`]
 **━━━━━━━━━━━━━━━**
