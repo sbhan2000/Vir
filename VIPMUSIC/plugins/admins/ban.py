@@ -280,7 +280,7 @@ async def mute_command_handler(client, message):
         await message.reply_text("**🥤| من فضلك قم بالرد على رسالة المستخدم او كتابة اليوزر.**")
         return
     
-    msg_text, result = await mute_user(user_id, first_name, admin_id, admin_name, chat_id)
+    msg_text = await mute_user(user_id, first_name, admin_id, admin_name, chat_id)
     await message.reply_text(msg_text)
 
 
