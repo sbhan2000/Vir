@@ -8,7 +8,7 @@ from ..logging import LOGGER
 
 class VIP(Client):
     def __init__(self):
-        LOGGER(𝚂𝙾𝚄𝚁𝙲𝙴 𝙷𝙼𝙳).info(f"تـم تـشغيل الـبوت بـنجاح... ")
+        LOGGER(__name__).info(f"تـم تـشغيل الـبوت بـنجاح... ")
         super().__init__(
             name="VIPMUSIC",
             api_id=config.API_ID,
