@@ -41,7 +41,7 @@ class VIP(Client):
             )
             
 
-        a = await self.get_chat_member(config.LOGGER_ID, self.id)
+        a = await self.get_chat_member(config.LOG_GROUP_ID, self.id)
         if a.status != ChatMemberStatus.ADMINISTRATOR:
             LOGGER(__name__).error(
                 "مـن فضلك قـم بـرفع الـبوت مـشرف وفـتح اتـصال. "
