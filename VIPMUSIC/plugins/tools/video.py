@@ -23,7 +23,7 @@ from pyrogram.types import (
     Message,
 )
 
-from config import BANNED_USERS, SONG_DOWNLOAD_DURATION, SONG_DOWNLOAD_DURATION_LIMIT
+from config import BANNED_USERS, SONG_DOWNLOAD_DURATION
 from VIPMUSIC import YouTube, app
 from VIPMUSIC.utils.decorators.language import language, languageCB
 from VIPMUSIC.utils.formatters import convert_bytes
