@@ -77,7 +77,7 @@ async def download_video(client, CallbackQuery):
     user_id = CallbackQuery.from_user.id
     user_name = CallbackQuery.from_user.first_name
     chutiya = "[" + user_name + "](tg://user?id=" + str(user_id) + ")"
-    await CallbackQuery.answer("**🥤| جاࢪي التنزيل يࢪجى الانتظاࢪ...**", show_alert=True)
+    await CallbackQuery.answer("🥤| جاࢪي التنزيل يࢪجى الانتظاࢪ...", show_alert=True)
     pablo = await client.send_message(CallbackQuery.message.chat.id, f"**🥤| من فضلك {chutiya} انتظر قليلا\n🥤| جاري التحميل...**")
     if not videoid:
         await pablo.edit(
@@ -180,7 +180,7 @@ async def download_audio(client, CallbackQuery):
     user_id = CallbackQuery.from_user.id
     user_name = CallbackQuery.from_user.first_name
     chutiya = "[" + user_name + "](tg://user?id=" + str(user_id) + ")"
-    await CallbackQuery.answer("**🥤| جاࢪي التنزيل يࢪجى الانتظاࢪ...", show_alert=True)
+    await CallbackQuery.answer("🥤| جاࢪي التنزيل يࢪجى الانتظاࢪ...", show_alert=True)
     pablo = await client.send_message(CallbackQuery.message.chat.id, f"**🥤| من فضلك {chutiya} انتظر قليلا\n🥤| جاري التحميل...**")
     if not videoid:
         await pablo.edit(
@@ -237,7 +237,7 @@ async def download_audio(client, CallbackQuery):
                 file_stark,
             ),
         )
-        await client.send_message(CallbackQuery.message.chat.id, f"**🥤| مرحباً** {chutiya}\n\n**🥤| تم تنزيل الفيديو بنجاح في خاص البوت**\n**🥤|  [اضغط هنا للذهاب اليه](tg://openmessage?user_id={app.id})**")
+        await client.send_message(CallbackQuery.message.chat.id, f"**🥤| مرحباً** {chutiya}\n\n**🥤| تم تنزيل الصوت بنجاح في خاص البوت**\n**🥤|  [اضغط هنا للذهاب اليه](tg://openmessage?user_id={app.id})**")
         
         await pablo.delete()
         for files in (sedlyf, file_stark):
